@@ -7,14 +7,3 @@
   background-color: lightblue;
   padding-bottom: 50px;
 }
-
-.main-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-#recent-searches-flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}

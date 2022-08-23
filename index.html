@@ -12,31 +12,15 @@
   </head>
   <body>
     <header class="title">Weather Dashboard</header>
-    <!-- flex container -->
-    <main class="main-container">
-      <div>
-        <div class="mb-3">
-          <label for="formGroupExampleInput" class="form-label"
-            >Search for a city
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput"
-            placeholder="Type desired city"
-          />
-          <button type="button" class="btn btn-primary">Search</button>
-        </div>
-        <div id="recent-searches-flex">
-          <h3>Recent searches</h3>
-          <button type="button" class="btn btn-secondary">Secondary</button>
-          <button type="button" class="btn btn-secondary">Secondary</button>
-        </div>
-      </div>
-      <div>
-        <div>Current</div>
+    <main class="row border">
+      <section class="col-sm-12 col-md-3 border">
+        <div>search</div>
+        <div>recent</div>
+      </section>
+      <section class="col-sm-12 col-md-9 border">
+        <div>current</div>
         <div>future</div>
-      </div>
+      </section>
     </main>
 
     <script src="./assets/script.js"></script>
