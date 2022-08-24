@@ -3,7 +3,13 @@
   justify-content: center;
 
   color: royalblue;
-  font-size: larger;
+  font-size: 100px;
+  font-weight: 100px;
   background-color: lightblue;
   padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.card-header {
+  font-size: xx-large;
 }
