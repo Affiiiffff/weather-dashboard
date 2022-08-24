@@ -1,8 +1,8 @@
 const API_KEY = "9a0eca744af4e8af73f0c7e3a0c24420";
 
-var searchButton = document.querySelector("#btn btn-outline-secondary");
+var searchButton = document.querySelector("#button-addon2");
 searchButton.addEventListener("click", getCityName);
-var searchInput = document.querySelector("#form-control");
+var searchInput = document.querySelector("#searchbox");
 
 //Get City Name
 function getCityName() {
