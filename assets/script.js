@@ -9,18 +9,20 @@ function getCityName() {
   cityName = searchInput.value;
 
   var requestUrl =
-    "https://api.openweathermap.org/data/2.5/weather?q=cityName&appid=apiKey";
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    cityName +
+    "&appid=" +
+    apiKey;
 
-  function handleData(response) {
-    return response.json();
-  }
-
-  var weatherData = fetch(requestUrl, { method: "GET" }).then((response) =>
-    handleData(response)
-  );
-
-  console.log(weatherData);
-  console.log(response);
+  fetch(requestUrl, {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      // Do some stuff ...
+      console.log(data);
+    })
+    .catch((err) => console.log(err));
 }
 
 // //get weather data using city name
