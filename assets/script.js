@@ -3,6 +3,22 @@ const apiKey = "9a0eca744af4e8af73f0c7e3a0c24420";
 var searchButton = document.querySelector("#button-addon2");
 searchButton.addEventListener("click", getCityName);
 var searchInput = document.querySelector("#searchbox");
+var cityNameEl = document.querySelector(".city-name");
+var currentTempEL = document.querySelector(".current-temp");
+
+function displayForecastData(lat, lon) {
+  var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+  fetch(forecastUrl, {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
+//data.list[0].sdasd;
+//data :['london', 'adeladie', 'melbourne']
 
 //Get City Name
 function getCityName() {
@@ -11,6 +27,7 @@ function getCityName() {
   var requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityName +
+    "&units=metric" +
     "&appid=" +
     apiKey;
 
@@ -19,14 +36,16 @@ function getCityName() {
   })
     .then((res) => res.json())
     .then((data) => {
-      // Do some stuff ...
-      console.log(data);
+      var fetchedData = data;
+
+      displayForecastData(fetchedData?.coord?.lat, fetchedData?.coord?.lon);
+      // append city name to cityname
+      //temp to temp
+      //humidity to humidity
+      // console.log(data);
+      cityNameEl.textContent = cityName;
+      currentTempEL.textContent = fetchedData.main.temp;
+      //console.log(fetchedData);
     })
     .catch((err) => console.log(err));
 }
-
-// //get weather data using city name
-// function getWeatherData() {
-//   const currentWeatherUrl =
-//     "https://api.openweathermap.org/data/2.5/weather?q=cityName&appid=apiKey";
-// }
