@@ -1,4 +1,4 @@
-const apiKey = "9a0eca744af4e8af73f0c7e3a0c24420";
+const apiKey = "7b43466e865aa18b8e5fccc1066b72d4";
 
 var searchButton = document.querySelector("#button-addon2");
 searchButton.addEventListener("click", getCityName);
@@ -7,6 +7,7 @@ var cityNameEl = document.querySelector(".city-name");
 var currentTempEL = document.querySelector(".current-temp");
 var currentWindEl = document.querySelector(".current-wind");
 var currentHumidityEl = document.querySelector(".current-humidity");
+var apiSection = document.querySelector("#apisection");
 
 function displayForecastData(lat, lon) {
   var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}lon=${lon}&appid=${apiKey}&exclude=current,minutely,hourly`;
@@ -25,6 +26,7 @@ function displayForecastData(lat, lon) {
 
 //Get City Name
 function getCityName() {
+  apiSection.style.display = "block";
   cityName = searchInput.value;
 
   var requestUrl =

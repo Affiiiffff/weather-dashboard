@@ -17,3 +17,7 @@
 .fivedayforecast {
   display: flex;
 }
+
+#apisection {
+  display: none;
+}
