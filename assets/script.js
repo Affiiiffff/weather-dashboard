@@ -9,7 +9,8 @@ var currentWindEl = document.querySelector(".current-wind");
 var currentHumidityEl = document.querySelector(".current-humidity");
 
 function displayForecastData(lat, lon) {
-  var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}lon=${lon}&appid=${apiKey}&exclude=current,minutely,hourly`;
+  // var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
   fetch(forecastUrl, {
     method: "GET",
