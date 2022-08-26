@@ -50,7 +50,7 @@ function getCityName() {
       currentWindEl.textContent = fetchedData.wind.speed;
       currentHumidityEl.textContent = fetchedData.main.humidity;
 
-      //console.log(fetchedData);
+      console.log(fetchedData);
     })
     .catch((err) => console.log(err));
 }
