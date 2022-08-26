@@ -5,6 +5,8 @@ searchButton.addEventListener("click", getCityName);
 var searchInput = document.querySelector("#searchbox");
 var cityNameEl = document.querySelector(".city-name");
 var currentTempEL = document.querySelector(".current-temp");
+var currentWindEl = document.querySelector(".current-wind");
+var currentHumidityEl = document.querySelector(".current-humidity");
 
 function displayForecastData(lat, lon) {
   var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
@@ -45,6 +47,8 @@ function getCityName() {
       // console.log(data);
       cityNameEl.textContent = cityName;
       currentTempEL.textContent = fetchedData.main.temp;
+      currentWindEl.textContent = fetchedData.wind.speed;
+      currentHumidityEl.textContent = fetchedData.main.humidity;
       //console.log(fetchedData);
     })
     .catch((err) => console.log(err));
