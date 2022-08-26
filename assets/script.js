@@ -49,6 +49,7 @@ function getCityName() {
       currentTempEL.textContent = fetchedData.main.temp;
       currentWindEl.textContent = fetchedData.wind.speed;
       currentHumidityEl.textContent = fetchedData.main.humidity;
+
       //console.log(fetchedData);
     })
     .catch((err) => console.log(err));
