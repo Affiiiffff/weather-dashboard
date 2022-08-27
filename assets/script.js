@@ -8,9 +8,13 @@ var currentTempEL = document.querySelector(".current-temp");
 var currentWindEl = document.querySelector(".current-wind");
 var currentHumidityEl = document.querySelector(".current-humidity");
 var apiSection = document.querySelector("#apisection");
+var currentUvEl = document.querySelector(".current-UV");
+
+// var now = moment();
+// var currentDate =
 
 function displayForecastData(lat, lon) {
-  var forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}lon=${lon}&appid=${apiKey}&exclude=current,minutely,hourly`;
+  var forecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&exclude=current,minutely,hourly`;
 
   fetch(forecastUrl, {
     method: "GET",
@@ -51,7 +55,7 @@ function getCityName() {
       currentTempEL.textContent = fetchedData.main.temp;
       currentWindEl.textContent = fetchedData.wind.speed;
       currentHumidityEl.textContent = fetchedData.main.humidity;
-
+      // currentUvEl.textContent = fetchedData.
       console.log(fetchedData);
     })
     .catch((err) => console.log(err));
