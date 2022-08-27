@@ -14,7 +14,7 @@ var currentUvEl = document.querySelector(".current-UV");
 // var currentDate =
 
 function displayForecastData(lat, lon) {
-  var forecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&exclude=current,minutely,hourly`;
+  var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
   fetch(forecastUrl, {
     method: "GET",
