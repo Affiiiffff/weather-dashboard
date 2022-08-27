@@ -17,6 +17,10 @@ var tomorrowDateEl = document.querySelector(".tomorrow-date");
 var tomorrowTempEl = document.querySelector(".tomorrow-temp");
 var tomorrowWindEL = document.querySelector(".tomorrow-wind");
 var tomorrowHumidityEL = document.querySelector(".tomorrow-humidity");
+var dayThreeDateEl = document.querySelector(".day3");
+var dayThreeTempEl = document.querySelector(".day3-temp");
+var dayThreeWindEl = document.querySelector(".day3-wind");
+var dayThreeHumidityEl = document.querySelector(".day3-humidity");
 
 function displayForecastData(lat, lon) {
   var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${apiKey}`;
@@ -35,6 +39,11 @@ function displayForecastData(lat, lon) {
       tomorrowTempEl.textContent = data.list[1].main.temp;
       tomorrowWindEL.textContent = data.list[1].wind.speed;
       tomorrowHumidityEL.textContent = data.list[1].main.humidity;
+
+      dayThreeDateEl.textContent = data.list[2].dt;
+      dayThreeTempEl.textContent = data.list[2].main.temp;
+      dayThreeWindEl.textContent = data.list[2].wind.speed;
+      dayThreeHumidityEl.textContent = data.list[2].main.humidity;
       console.log(data);
     });
 }
