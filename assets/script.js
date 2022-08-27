@@ -9,6 +9,9 @@ var currentWindEl = document.querySelector(".current-wind");
 var currentHumidityEl = document.querySelector(".current-humidity");
 var apiSection = document.querySelector("#apisection");
 var currentUvEl = document.querySelector(".current-UV");
+var todayTempEl = document.querySelector(".today-temp");
+var todayWindEl = document.querySelector(".today-wind");
+var todayHumidityEl = document.querySelector(".today-humidity");
 
 // var now = moment();
 // var currentDate =
@@ -21,6 +24,9 @@ function displayForecastData(lat, lon) {
   })
     .then((res) => res.json())
     .then((data) => {
+      todayTempEl.textContent = data.list[0].main.temp;
+      todayWindEl.textContent = data.list[0].wind.speed;
+      todayHumidityEl.textContent = data.list[0].main.humidity;
       console.log(data);
     });
 }
