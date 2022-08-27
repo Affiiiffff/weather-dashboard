@@ -14,7 +14,7 @@ var currentUvEl = document.querySelector(".current-UV");
 // var currentDate =
 
 function displayForecastData(lat, lon) {
-  var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  var forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${apiKey}`;
 
   fetch(forecastUrl, {
     method: "GET",
@@ -24,7 +24,7 @@ function displayForecastData(lat, lon) {
       console.log(data);
     });
 }
-//data.list[0].sdasd;
+//data.list[0].sdasd;https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&appid={apiKey}&exclude=current,minutely,hourly
 //data :['london', 'adeladie', 'melbourne']
 
 //Get City Name
