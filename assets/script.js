@@ -38,12 +38,14 @@ function displayForecastData(lat, lon) {
   })
     .then((res) => res.json())
     .then((data) => {
+      var dateString = moment.unix(data.list[1].dt).format("MM/DD/YYYY");
+      //create new variable for each day
       todayTempEl.textContent = data.list[0].main.temp;
       todayWindEl.textContent = data.list[0].wind.speed;
       todayHumidityEl.textContent = data.list[0].main.humidity;
       todayDateEl.textContent = data.list[0].dt;
 
-      tomorrowDateEl.textContent = data.list[1].dt;
+      tomorrowDateEl.textContent = dateString;
       tomorrowTempEl.textContent = data.list[1].main.temp;
       tomorrowWindEL.textContent = data.list[1].wind.speed;
       tomorrowHumidityEL.textContent = data.list[1].main.humidity;
@@ -67,12 +69,47 @@ function displayForecastData(lat, lon) {
 }
 //data.list[0].sdasd;https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&appid={apiKey}&exclude=current,minutely,hourly
 //data :['london', 'adeladie', 'melbourne']
+function recentCity(cityName) {
+  //save to local storage
+  var storedCities = localStorage.getItem("cities");
+  if (storedCities) {
+    var citiesNew = JSON.parse(storedCities);
+    citiesNew.push(cityName);
+    localStorage.setItem("cities", JSON.stringify(citiesNew));
+  } else {
+    localStorage.setItem("cities", JSON.stringify([cityName]));
+  }
 
-//Get City Name
-function getCityName() {
+  //append button
+  var button = document.createElement("button");
+  button.setAttribute("class", "btn btn-outline-secondary");
+  button.textContent = cityName;
+  button.addEventListener("click", function () {
+    fetchCity(cityName);
+  });
+
+  document.getElementById("recent-searches").appendChild(button);
+}
+
+var storedCities = localStorage.getItem("cities");
+if (storedCities) {
+  var citiesNew = JSON.parse(storedCities);
+
+  citiesNew.forEach((cityName) => {
+    var button = document.createElement("button");
+    button.setAttribute("class", "btn btn-outline-secondary");
+    button.textContent = cityName;
+    button.addEventListener("click", function () {
+      fetchCity(cityName);
+    });
+
+    document.getElementById("recent-searches").appendChild(button);
+  });
+  // create button
+}
+
+function fetchCity(cityName) {
   apiSection.style.display = "block";
-  cityName = searchInput.value;
-
   var requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityName +
@@ -93,6 +130,12 @@ function getCityName() {
       //humidity to humidity
       // console.log(data);
       cityNameEl.textContent = cityName;
+      var iconEl = document.createElement("img");
+      iconEl.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${fetchedData.weather[0].icon}.png`
+      );
+      cityNameEl.appendChild(iconEl);
       currentTempEL.textContent = fetchedData.main.temp;
       currentWindEl.textContent = fetchedData.wind.speed;
       currentHumidityEl.textContent = fetchedData.main.humidity;
@@ -100,4 +143,11 @@ function getCityName() {
       console.log(fetchedData);
     })
     .catch((err) => console.log(err));
+}
+//Get City Name
+function getCityName() {
+  cityName = searchInput.value;
+
+  recentCity(cityName);
+  fetchCity(cityName);
 }
