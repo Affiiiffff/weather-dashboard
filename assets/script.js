@@ -38,32 +38,36 @@ function displayForecastData(lat, lon) {
   })
     .then((res) => res.json())
     .then((data) => {
-      var dateString = moment.unix(data.list[1].dt).format("MM/DD/YYYY");
-      //create new variable for each day
+      var todayDateEl = moment.unix(data.list[0].dt).format("MM/DD/YYYY");
+      var dateString = moment.unix(data.list[5].dt).format("MM/DD/YYYY");
+      var day2Date = moment.unix(data.list[12].dt).format("MM/DD/YYYY");
+      var day3Date = moment.unix(data.list[22].dt).format("MM/DD/YYYY");
+      var day4Date = moment.unix(data.list[28].dt).format("MM/DD/YYYY");
+
+      todayDateEl.textContent = todayDateEl;
       todayTempEl.textContent = data.list[0].main.temp;
       todayWindEl.textContent = data.list[0].wind.speed;
       todayHumidityEl.textContent = data.list[0].main.humidity;
-      todayDateEl.textContent = data.list[0].dt;
 
       tomorrowDateEl.textContent = dateString;
-      tomorrowTempEl.textContent = data.list[1].main.temp;
-      tomorrowWindEL.textContent = data.list[1].wind.speed;
-      tomorrowHumidityEL.textContent = data.list[1].main.humidity;
+      tomorrowTempEl.textContent = data.list[5].main.temp;
+      tomorrowWindEL.textContent = data.list[5].wind.speed;
+      tomorrowHumidityEL.textContent = data.list[5].main.humidity;
 
-      dayThreeDateEl.textContent = data.list[2].dt;
-      dayThreeTempEl.textContent = data.list[2].main.temp;
-      dayThreeWindEl.textContent = data.list[2].wind.speed;
-      dayThreeHumidityEl.textContent = data.list[2].main.humidity;
+      dayThreeDateEl.textContent = day2Date;
+      dayThreeTempEl.textContent = data.list[12].main.temp;
+      dayThreeWindEl.textContent = data.list[12].wind.speed;
+      dayThreeHumidityEl.textContent = data.list[12].main.humidity;
 
-      dayFourDateEl.textContent = data.list[3].dt;
-      dayFourTempEl.textContent = data.list[3].main.temp;
-      dayFourWindEl.textContent = data.list[3].wind.speed;
-      dayFourHumidityEl.textContent = data.list[3].main.humidity;
+      dayFourDateEl.textContent = day3Date;
+      dayFourTempEl.textContent = data.list[22].main.temp;
+      dayFourWindEl.textContent = data.list[22].wind.speed;
+      dayFourHumidityEl.textContent = data.list[22].main.humidity;
 
-      day5DateEl.textContent = data.list[4].dt;
-      day5TempEl.textContent = data.list[4].main.temp;
-      day5WindEl.textContent = data.list[4].wind.speed;
-      day5HumidityEl.textContent = data.list[4].main.humidity;
+      day5DateEl.textContent = day4Date;
+      day5TempEl.textContent = data.list[28].main.temp;
+      day5WindEl.textContent = data.list[28].wind.speed;
+      day5HumidityEl.textContent = data.list[28].main.humidity;
       console.log(data);
     });
 }
